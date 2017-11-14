@@ -8,7 +8,7 @@ cheat() {
     grep -iw --color=auto $1 ~/Google\ Drive/home/command_cheatsheet
 }
 
-# (Optional) Use 'thecheat <word>' to have cheatsheet results deliverred in color by Homestar Runner's The Cheat. Requires cowsay, lolcat, and thecheat.cow
+# (Optional) Use 'thecheat <word>' to have cheatsheet results delivered in color by Homestar Runner's The Cheat. Requires cowsay, lolcat, and thecheat.cow
 thecheat() {
     grep -iw $1 ~/Google\ Drive/home/command_cheatsheet | cowsay -f thecheat -n | lolcat
 }
