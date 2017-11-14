@@ -1,0 +1,130 @@
+#!/bin/bash
+cat /etc/*release                                               # find Linux distribution version
+cat /etc/*-release | uniq -u | grep 'release'                   # show Linux release
+sudo fuser -k 80/tcp                                            # kill all processes using port 80 (useful if nginx won't stop/restart gracefully)
+alias cdwww="cd /var/www/html/"                                 # add to ~/.bashrc for shortcut to webroot
+
+# apt
+apt list --installed                                            # list all installed packages
+apt-cache policy |grep http |awk '{print $2 $3}' |sort -u       # list apt sources
+apt-get install <package name>=<version>                        # install a specific version of a package
+
+# AWS motd banner
+sudo vim /etc/update-motd.d/30-banner                           # edit motd banner on AWS Amazon Linux AMI systems
+sudo /usr/sbin/update-motd                                      # update motd banner from contents of /etc/update-motd.d/ on AWS Amazon Linux AMI systems
+
+# cron
+  sudo crontab -l -u <user>                                     # view cron jobs for a specific user
+  sudo crontab -e -u <user>                                     # edit cron jobs for a specific user
+  sudo sh -c 'tail -n +1 /var/spool/cron/*'                     # list crontab for all users
+# cron time string format:
+  * * * * *                                                     # cron time string character positions
+  └─│─│─│─│── minute                                            # run cron job (0-59) minutes past the hour, or * for every minute
+    └─│─│─│── hour                                              # run cron job (0-23) hours past midnight, or * for every hour
+      └─│─│── day of month                                      # run cron job on day (1-31) of the month, or * for every day
+        └─│── month                                             # run cron job during month (1-12) of the year, or * for every month
+          └── day of week                                       # run cron job every (0-6) days past Sunday, or * for every day of the week
+# cron time special characters:
+  * (asterisk)                                                  # cron time: any/every
+  , (comma)                                                     # cron time: value list separator
+  - (hyphen)                                                    # cron time: defines range of values
+  / (forward slash)                                             # cron time: step value
+# cron time examples:
+  * * * * *                                                     # run cron job every minute
+  0 0-6,18-23 * * *                                             # run cron job hourly from 18:00 through 06:00
+  10 */2 * * *                                                  # run cron job 10 minutes past the hour, every other hour
+# See http://crontab.guru for more interactive cron examples
+
+# grep
+grep -rli --exclude-dir={dir1,dir2,dir3} keyword /search/path   # search path for pattern with exceptions
+grep "^[^#;]" file.name                                         # show only non-commented lines (ignore comments)
+grep '^[[:blank:]]*[^[:blank:]#;]' file.name                    # show only non-commented non-blank lines (ignore comments and blank lines)
+
+# history (bash)
+HISTCONTROL=ignorespace                                         # tell bash not to record commands starting with space to history (add to .bashrc to make persistent)
+history -d <number>                                             # delete command <number> from bash history
+
+# magento
+php bin/magento admin:user:create --admin-user='<user>' --admin-password='<password>' --admin-email='<user@email.com>' --admin-firstname='<first>' --admin-lastname='<last>'    # create admin user
+rm -rf var/di/* var/generation/* var/cache/* var/log/* var/page_cache/* var/session/* var/view_preprocessed/* pub/static/*  # clear out magento cache and temp directories
+magento setup:install                                           # install Magento software
+magento setup:upgrade                                           # update the Magento software
+magento setup:di:compile                                        # run single-tenant compiler
+magento setup:static-content:deploy                             # deploy static content
+magento cache:clean                                             # clean cache type(s)
+magento cache:flush                                             # flush cache storage used by cache type(s)
+magento module:{enable|disable}                                 # enable or disable modules
+magento setup:db:status                                         # check if the database is up-to-date with the code
+export PATH=$PATH:/var/www/html/bin                             # add to ~/.bashrc to add magento commands to $PATH
+
+# mysql
+mysql -u db_username -p db_name < db_file.sql                   # import database 'db_name' from 'db_file.sql' into mysql (use gunzip if file.sql.gz)
+SELECT User FROM mysql.user;                                    # mysql > show all database users
+SHOW DATABASES;                                                 # mysql > show all databases
+sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' file.sql > newfile.sql   # make a mysql dump ready to import without SUPER permissions error
+# dump mysql database 'db_name' on server 'db_server' to file:
+mysqldump -h <db_server> -u <db_username> -p <db_name> --single-transaction | sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' | gzip > <db_file>.sql.gz
+
+# netstat
+sudo netstat -tulpn | grep :80                                  # find out what is running/listening on port 80
+sudo netstat | grep http | wc -l                                # check how many http connections are open
+
+# nginx
+sudo nginx -s reload                                            # reload nginx config
+sudo nginx -s quit                                              # gracefully shutdown nginx
+sudo nginx -s stop                                              # terminates nginx process
+sudo nginx -t                                                   # nginx config syntax check (pre-load)
+sudo nginx -T                                                   # displays currently running configs
+sudo nginx -v                                                   # checks nginx version
+ps aux | grep "[n]ginx"                                         # check running nginx processes
+service nginx status                                            # check nginx service status
+
+# rsync
+rsync -havz --stats --progress -e "ssh -i /path/to/sshkey.pem" /path/to/local/file user@remotehost:~/   # transfer local file to home directory on remote server
+rsync -havz --stats --progress -e "ssh -i /path/to/sshkey.pem" user@remotehost:~/file ~/                # transfer file from home directory on remote server to local home directory
+
+# screen
+screen                                                          # start screen
+<ctrl-a> c                                                      # creat new screen window
+<ctrl-a> n                                                      # go to next screen window
+<ctrl-a> p                                                      # go to previous screen window
+<ctrl-a> "                                                      # show list of screen windows (allows you to select a window to change to)"
+<ctrl-a> w                                                      # show screen window bar
+<ctrl-a> m                                                      # monitor current screen window for activity, alert when active
+<ctrl-a> _                                                      # monitor current screen window for silence or no activity, alert when inactive
+<ctrl-a> d                                                      # detach from current screen
+screen -ls                                                      # list screen sessions
+screen -r [pid.session.name]                                    # re-attach to screen session
+https://www.howtoforge.com/linux_screen                         # decent screen tutorial
+
+# ssh
+ssh-keygen -t rsa                                               # generate ssh keys
+chmod 700 ~/.ssh && chmod 600 ~/.ssh/keys/*                     # fix permissions on ssh folder (modify path to stored keys if needed)
+
+# tar
+tar -xvzf file.tar.gz                                           # extract entire .tar.gz archive
+tar -tvf file.tar.gz                                            # view a table of contents by listing all files in achieve
+tar -xvjf file.tar.bz2                                          # extract file which was compressed using a bZip2 compressor
+tar -zcvf archive-name.tar.gz directory-name                    # compress entire directory
+
+# user and group management
+useradd -s /sbin/nologin dbuser                                 # add a user without a valid login shell (to establish SSH tunnels for DB access, for example)
+groups <user>                                                   # list groups <user> is in
+sudo usermod -a -G <group> <user>                               # add user to group
+
+# varnish
+varnishlog -g request -q 'ReqMethod eq "PURGE"'                 # view logged varnish purge requsts
+
+# yum
+yum list all                                                    # list all installed and available packages
+yum list installed                                              # list all installed packages
+yum list available                                              # list all available packages
+yum repolist all                                                # list all yum repositories and their status
+yum repolist enabled                                            # list only enabled yum repositories
+yum repolist disabled                                           # list disabled yum repositories
+yum --disablerepo=* --enablerepo=repo_name install [packages]   # only install packages from the 'repo_name' repository
+
+# zip, gzip
+gunzip file.gz                                                  # extract .gz file without tar
+gzcat <filename>                                                # look at gzipped file contents without extracting it
+
