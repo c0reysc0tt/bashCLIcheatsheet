@@ -98,14 +98,14 @@ screen -r [pid.session.name]                                    # re-attach to s
 https://www.howtoforge.com/linux_screen                         # decent screen tutorial
 
 # ssh
-ssh-keygen -t rsa                                               # generate ssh keys
-chmod 700 ~/.ssh && chmod 600 ~/.ssh/keys/*                     # fix permissions on ssh folder (modify path to stored keys if needed)
+ssh-keygen -t rsa										# generate ssh keys
+find ~/.ssh -type f -exec chmod -R 600 {} \; && find ~/.ssh -type d -exec chmod -R 700 {} \;	# fix permissions on ssh folder and keys
 
 # tar
-tar -xvzf file.tar.gz                                           # extract entire .tar.gz archive
-tar -tvf file.tar.gz                                            # view a table of contents by listing all files in achieve
-tar -xvjf file.tar.bz2                                          # extract file which was compressed using a bZip2 compressor
-tar -zcvf archive-name.tar.gz directory-name                    # compress entire directory
+tar xvzf file.tar.gz                                            # extract entire .tar.gz archive
+tar tvf file.tar.gz                                             # view a table of contents by listing all files in achieve
+tar xvjf file.tar.bz2                                           # extract file which was compressed using a bZip2 compressor
+tar zcvf archive-name.tar.gz directory-name                     # compress entire directory
 
 # user and group management
 useradd -s /sbin/nologin dbuser                                 # add a user without a valid login shell (to establish SSH tunnels for DB access, for example)
