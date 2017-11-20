@@ -35,6 +35,9 @@ sudo /usr/sbin/update-motd                                      # update motd ba
   10 */2 * * *                                                  # run cron job 10 minutes past the hour, every other hour
 # See http://crontab.guru for more interactive cron examples
 
+# docker
+docker images							# List docker images
+
 # grep
 grep -rli --exclude-dir={dir1,dir2,dir3} keyword /search/path   # search path for pattern with exceptions
 grep "^[^#;]" file.name                                         # show only non-commented lines (ignore comments)
