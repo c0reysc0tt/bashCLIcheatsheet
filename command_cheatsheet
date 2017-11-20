@@ -40,13 +40,13 @@ docker images							# List docker images
 
 # git
 git init							# initialize empty git repo in .git/
-git status							# check current state of project; show current branch, list changes to be committed, untracked files, etc.
+git status							# show current branch, list changes to be committed, untracked files, etc.
 git add <file>							# add untracked file to staging area
 git add '*.txt'							# add all new .txt files to staging area
 git commit -m "<message>"					# store staged changes
 git log								# list changes committed so far
 git remote add origin <https://some.repo.com>			# add remote repository
-git push -u origin master					# push local changes to remote origin repo (-u stores params so only 'git push' is needed next time) 
+git push -u origin master					# push local changes to remote repo origin (-u stores params so only 'git push' is needed next time) 
 git pull origin master						# check for changes on remote origin repo and pull them down
 git diff HEAD							# check what is different from most recent commit
 git diff --staged						# show changes within files that have already been staged
