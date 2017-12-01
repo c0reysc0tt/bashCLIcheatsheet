@@ -1,9 +1,45 @@
-LINUX COMMAND CHEATSHEET BASH TOOLS
----
-I use this to quickly look up Linux commands I run frequently but don't want to remember or type.  The cheatsheet file is just an example.  Please modify your own cheatsheet as you see fit.  If you add everything from the included .bashrc snippet to your own .bashrc or .bash_profile, you can quickly edit the cheatsheet file using 'vicheat'.  I chose that name to follow the same convention as visudo, but you can edit the alias if something else makes more sense to you.  
+# Linux CLI cheatsheet
 
-I store my own cheatsheet in a Google Drive folder on my Mac, so it will automatically sync when I update it and I can use the same cheatsheet across multiple systems.  This is purely optional and isn't really supported on Linux anyway, so store the cheatsheet file wherever you like on your own system.  Just remember to change '~/Google\ Drive/home/command_cheatsheet' to the path of your own cheatsheet file every time it appears in the .bashrc snippet.
+### A reference tool for maintaining and searching a cheatsheet for Linux commands
 
-If you choose to include the optional 'thecheat' function, you'll need to have cowsay and lolcat installed, and you'll want to put thecheat.cow in your cows folder (Check 'man cowsay' for the location of the cows directory.  On my Mac/homebrew cowsay setup, it's located at: /usr/local/Cellar/cowsay/3.04/share/cows)
+Summary:
+---------------------
+I use this to quickly look up Linux commands I run frequently but don't want to remember or type.  The cheatsheet file itself is just an example.  Please modify your own cheatsheet as you see fit.  
 
-I hope this is useful to some people out there, and I welcome your feedback!  Happy cheating!
+Setup:
+---------------------
+1. Copy these files to a local directory. For exaple:
+```bash
+mkdir ~/.cheatsheet && cd ~/.cheatsheet && git clone https://gist.github.com/c0reysc0tt/ccde4ffd1e5ff740569f5cd9700a4262 .
+```
+
+2. Copy the contents of of the included .bashrc snippet to your own .bashrc or .bash_profile. For example:
+```bash
+cat .bashrc >> ~/.bashrc && source ~/.bashrc
+```
+
+### .bashrc notes:
+- Make sure the `CHEATDIR` variable matches the location where you cloned the repo.
+- If you plan to use your cheatsheet on multiple systems but don't want to use Git, consider putting it in a Dropbox or Google Drive folder that automatically syncs with a cloud service.
+- The `thecheat` function is optional.  See below for additional dependencies and usage.
+
+Usage:
+---------------------
+Use `cheat <word>` to search the cheatsheet for a word.  Results will look like this:
+
+![alt text](https://gist.githubusercontent.com/c0reysc0tt/ccde4ffd1e5ff740569f5cd9700a4262/raw/8b02338adcafcae800ee9bf3cc59f17bff7d1251/screenshot_cheat.png "cheat cron")
+
+
+To have your results delivered by a colorful ASCII version of The Cheat from Homestar Runner, type `thecheat <word>` instead.  This requires that both **cowsay** and **lolcat** are installed, and you'll need to copy the included thecheat.cow file into your cowsay cows folder.  On my Mac, it looks like this:
+```bash
+cp thecheat.cow /usr/local/Cellar/cowsay/3.04/share/cows/
+```
+
+![alt text](https://gist.githubusercontent.com/c0reysc0tt/ccde4ffd1e5ff740569f5cd9700a4262/raw/8b02338adcafcae800ee9bf3cc59f17bff7d1251/screenshot_thecheat.png "thecheat yum")
+
+Editing the cheatsheet:
+---------------------
+You can quickly edit the cheatsheet file using `vicheat`.  I chose that name to follow the same convention as visudo, but you can edit the alias in the .bashrc file if something else makes more sense to you.  
+
+
+## I hope this is useful to some people out there, and I welcome your feedback!  Happy cheating!

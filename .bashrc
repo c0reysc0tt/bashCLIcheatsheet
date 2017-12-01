@@ -1,3 +1,4 @@
+
 ####################
 #  CLI cheatsheet  #
 ####################
@@ -18,3 +19,4 @@ cheat() {
 thecheat () {
     grep -iw $1 $CHEATDIR/command_cheatsheet | cowsay -f thecheat -n | lolcat
 }
+
