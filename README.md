@@ -30,9 +30,9 @@ Use `cheat <word>` to search the cheatsheet for a word.  Results will look like 
 ![alt text](https://gist.githubusercontent.com/c0reysc0tt/ccde4ffd1e5ff740569f5cd9700a4262/raw/8b02338adcafcae800ee9bf3cc59f17bff7d1251/screenshot_cheat.png "cheat cron")
 
 
-To have your results delivered by a colorful ASCII version of The Cheat from Homestar Runner, type `thecheat <word>` instead.  This requires that both **cowsay** and **lolcat** are installed, and you'll need to copy the included thecheat.cow file into your cowsay cows folder.  On my Mac, it looks like this:
+To have your results delivered by a colorful ASCII version of The Cheat from Homestar Runner, type `thecheat <word>` instead.  This requires that both **cowsay** and **lolcat** are installed, and you'll need to copy the included thecheat.cow file into your cowsay cows folder (or make a link to it in your cows folder).  On my Mac, it looks like this:
 ```bash
-cp thecheat.cow /usr/local/Cellar/cowsay/3.04/share/cows/
+ln -s ~/.cheatsheet/thecheat.cow /usr/local/Cellar/cowsay/3.04/share/cows/thecheat.cow
 ```
 
 ![alt text](https://gist.githubusercontent.com/c0reysc0tt/ccde4ffd1e5ff740569f5cd9700a4262/raw/8b02338adcafcae800ee9bf3cc59f17bff7d1251/screenshot_thecheat.png "thecheat yum")
