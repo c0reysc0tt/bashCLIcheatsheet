@@ -90,6 +90,7 @@ grep '^[[:blank:]]*[^[:blank:]#;]' file.name                    # show only non-
 HISTCONTROL=ignorespace                                         # tell bash not to record commands starting with space to history (add to .bashrc to make persistent)
 history -d <number>                                             # delete command <number> from bash history
 
+
 # magento
 php bin/magento admin:user:create --admin-user='<user>' --admin-password='<password>' --admin-email='<user@email.com>' --admin-firstname='<first>' --admin-lastname='<last>'    # create admin user
 rm -rf var/di/* var/generation/* var/cache/* var/log/* var/page_cache/* var/session/* var/view_preprocessed/* pub/static/*  # clear out magento cache and temp directories
