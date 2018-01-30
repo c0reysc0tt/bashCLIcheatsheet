@@ -4,7 +4,7 @@
 
 Summary:
 ---------------------
-I use this to quickly look up Linux commands I run frequently but don't want to remember or type.  The cheatsheet file itself is just an example.  Please modify your own cheatsheet as you see fit.  
+I use this to quickly look up Linux commands I run frequently but don't want to remember or type.  It greps for whatever word you type after "cheat".  My cheatsheet file is included as a starting point, but feel free to modify it or use your own as you see fit.  
 
 Setup:
 ---------------------
