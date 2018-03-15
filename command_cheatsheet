@@ -161,6 +161,7 @@ tmux new -s session_name					# creates a new tmux session named session_name
 tmux attach -t session_name					# attaches to an existing tmux session named session_name
 tmux switch -t session_name					# switches to an existing session named session_name
 tmux list-sessions						# lists existing tmux sessions
+tmux kill-session -t :0-9					# kill tmux session
 tmux detach							# detach the currently attached session
 tmux new-window							# create a new window
 tmux select-window -t :0-9					# move to the window based on index
