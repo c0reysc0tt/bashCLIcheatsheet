@@ -1,5 +1,4 @@
 #!/bin/bash
-
 cat /etc/*release                                               # find Linux distribution version
 cat /etc/*-release | uniq -u | grep 'release'                   # show Linux release
 sudo fuser -k 80/tcp                                            # kill all processes using port 80 (useful if nginx won't stop/restart gracefully)
