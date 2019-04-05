@@ -1,6 +1,6 @@
-# Linux CLI cheatsheet
+# bash CLI cheatsheet
 
-### A reference tool for maintaining and searching a cheatsheet for Linux commands
+### A reference tool for maintaining and searching a cheatsheet for bash commands
 
 Summary:
 ---------------------
@@ -20,7 +20,7 @@ cat .bashrc >> ~/.bashrc && source ~/.bashrc
 
 ### .bashrc notes:
 - Make sure the `CHEATDIR` variable matches the location where you cloned the repo.
-- If you plan to use your cheatsheet on multiple systems but don't want to use Git, consider putting it in a Dropbox or Google Drive folder that automatically syncs with a cloud service.
+- If you plan to use your cheatsheet on multiple systems but don't want to use Git, consider putting it in a folder that autopmatically syncs with a cloud storage service like Dropbox or Google Drive.
 - The `thecheat` function is optional.  See below for additional dependencies and usage.
 
 Usage:
