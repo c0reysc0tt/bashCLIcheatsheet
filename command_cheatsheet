@@ -95,6 +95,9 @@ grep '^[[:blank:]]*[^[:blank:]#;]' file.name                    # show only non-
 HISTCONTROL=ignorespace                                         # tell bash not to record commands starting with space to history (add to .bashrc to make persistent)
 history -d <number>                                             # delete command <number> from bash history
 
+# kubernetes
+kubectl exec -it <pod name> -n <namespace> -- /bin/bash		# accesh shell in a container running in a kubernetes/EKS pod (see https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)
+
 # ln
 ln -s <target> <name>						# creates a symbolic link (symlink) to <target> called <name>
 
