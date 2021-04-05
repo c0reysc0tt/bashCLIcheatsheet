@@ -1,5 +1,4 @@
 #!/bin/bash
-# test
 # BASH COMMAND CHEATSHEET
 
 cat /etc/*release                                               # find Linux distribution version

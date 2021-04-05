@@ -10,12 +10,16 @@ Setup:
 ---------------------
 1. Copy these files to a local directory. For exaple:
 ```bash
-mkdir ~/.cheatsheet && cd ~/.cheatsheet && git clone https://gist.github.com/c0reysc0tt/ccde4ffd1e5ff740569f5cd9700a4262 .
+mkdir ~/.cheatsheet && cd ~/.cheatsheet && git clone https://github.com/c0reysc0tt/bashCLIcheatsheet.git .
 ```
 
-2. Copy the contents of of the included .bashrc snippet to your own .bashrc or .bash_profile. For example:
+2. Copy the contents of of the included .bashrc snippet to your own .bashrc, .bash_profile or .zshrc file. For example:
 ```bash
 cat .bashrc >> ~/.bashrc && source ~/.bashrc
+```
+or:
+```bash
+cat .bashrc >> ~/.zshrc && source ~/.zshrc
 ```
 
 ### .bashrc notes:
