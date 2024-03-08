@@ -165,6 +165,35 @@ tar tvf file.tar.gz                                             # view a table o
 tar xvjf file.tar.bz2                                           # extract file which was compressed using a bZip2 compressor
 tar zcvf archive-name.tar.gz directory-name                     # compress entire directory
 
+# terraform
+terraform -install-autocomplete                     # setup tab auto-completion, requires logging back in
+terraform fmt                                       # format code per HCL canonical standard
+terraform validate                                  # validate code for syntax
+terraform validate -backend=false                   # validate code skip backend validation
+terraform init                                      # initialize directory, pull down providers
+terraform init -get-plugins=false                   # initialize directory, do not download plugins
+terraform init -verify-plugins=false                # initialize directory, do not verify plugins for Hashicorp signature
+terraform apply --auto-approve                      # apply changes without being prompted to enter "yes"
+terraform destroy --auto-approve                    # destroy/cleanup deployment without being prompted for “yes”
+terraform plan -out plan.out                        # output the deployment plan to plan.out
+terraform apply plan.out                            # use the plan.out plan file to deploy infrastructure
+terraform plan -destroy                             # outputs a destroy plan
+terraform apply -target=aws_instance.my_ec2         # only apply/deploy changes to the targeted resource
+terraform apply -var my_region_variable=us-east-1   # pass a variable via command-line while applying a configuration
+terraform apply -lock=true                          # lock the state file so it can't be modified by any other Terraform apply or modification action(possible only where backend allows lockin
+terraform apply refresh=false                       # do not reconcile state file with real-world resources(helpful with large complex deployments for saving deployment time)
+terraform apply --parallelism=5                     # number of simultaneous resource operations
+terraform refresh                                   # reconcile the state in Terraform state file with real-world resources
+terraform providers                                 # get information about providers used in current configuration
+terraform state show aws_instance.my_ec2            # show details stored in Terraform state for the resource
+terraform state pull > terraform.tfstate            # download and output terraform state to a file
+
+# terraform state file manipulation
+terraform state mv aws_iam_role.my_ssm_role module.custom_module        # move a resource tracked via state to different module
+terraform state replace-provider hashicorp/aws registry.custom.com/aws  # replace an existing provider with another
+terraform state list                                                    # list out all the resources tracked via the current state file
+terraform state rm  aws_instance.myinstace                              # unmanage a resource, delete it from Terraform state file
+
 # tmux
 tmux new -s session_name					# creates a new tmux session named session_name
 tmux attach -t session_name					# attaches to an existing tmux session named session_name
